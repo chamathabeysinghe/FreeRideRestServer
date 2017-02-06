@@ -32,6 +32,14 @@ public class User implements Serializable {
     @Column(nullable = false)
     private String password;
 
+    @NotEmpty
+    @Column(nullable = false)
+    private String gender;
+
+    @NotEmpty
+    @Column(nullable = false)
+    private String nic;
+
     public Long getId() {
         return id;
     }
@@ -70,6 +78,22 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getNic() {
+        return nic;
+    }
+
+    public void setNic(String nic) {
+        this.nic = nic;
     }
 
     @Override
