@@ -28,9 +28,6 @@ public class User implements Serializable {
     @Column(nullable = false)
     private String telephone;
 
-    @NotEmpty
-    @Column(nullable = false)
-    private String password;
 
     @NotEmpty
     @Column(nullable = false)
@@ -39,6 +36,10 @@ public class User implements Serializable {
     @NotEmpty
     @Column(nullable = false)
     private String nic;
+
+    @NotEmpty
+    @Column(nullable = false)
+    private String securityCode;
 
     public Long getId() {
         return id;
@@ -72,13 +73,6 @@ public class User implements Serializable {
         this.telephone = telephone;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public String getGender() {
         return gender;
@@ -94,6 +88,14 @@ public class User implements Serializable {
 
     public void setNic(String nic) {
         this.nic = nic;
+    }
+
+    public String getSecurityCode() {
+        return securityCode;
+    }
+
+    public void setSecurityCode(String securityCode) {
+        this.securityCode = securityCode;
     }
 
     @Override
