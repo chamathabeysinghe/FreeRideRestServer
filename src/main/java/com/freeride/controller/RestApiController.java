@@ -1,5 +1,6 @@
 package com.freeride.controller;
 
+import com.freeride.model.Travel;
 import com.freeride.model.User;
 import com.freeride.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class RestApiController {
     }
 
     @RequestMapping(value = "/user",method = RequestMethod.POST)
-    public ResponseEntity<String> login(@RequestParam Map<String,String> allRequestParams){
+    public ResponseEntity<String> register(@RequestParam Map<String,String> allRequestParams){
         String name = allRequestParams.get("name");
         String nic= allRequestParams.get("nic");
         String telephone= allRequestParams.get("telephone");
@@ -52,5 +53,10 @@ public class RestApiController {
         return new ResponseEntity<String>("Successfully logged in",HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/travel",method = RequestMethod.POST)
+    public ResponseEntity<String> addTravel(@RequestParam Map<String,String> allReqeustParams){
+        Travel travel=new Travel();
+        return null;
+    }
 
 }
