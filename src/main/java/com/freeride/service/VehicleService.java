@@ -1,17 +1,22 @@
 package com.freeride.service;
 
 import com.freeride.model.Vehicle;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
  * Created by Chamath Abeysinghe on 2/4/2017.
  */
+
 public interface VehicleService {
 
     Vehicle findById(Long id);
 
-    Vehicle findByUser(String name);
+    List<Vehicle> findByUserId(String userId);
+
+    Vehicle findByNumber(String number);
 
     void saveVehicle(Vehicle user);
 

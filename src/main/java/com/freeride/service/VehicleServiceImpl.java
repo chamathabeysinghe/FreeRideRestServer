@@ -5,12 +5,17 @@ import com.freeride.model.Vehicle;
 import com.freeride.repositories.UserRepository;
 import com.freeride.repositories.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
  * Created by Chamath Abeysinghe on 2/8/2017.
  */
+
+@Service("vehicleService")
+@Transactional
 public class VehicleServiceImpl implements VehicleService {
     @Autowired
     private VehicleRepository vehicleRepository;
@@ -22,8 +27,14 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public Vehicle findByUser(String userId) {
-        return null;//vehicleRepository.findByUserId(userId);
+    public List<Vehicle> findByUserId(String userId) {
+        return vehicleRepository.findByUserId(userId);
+    }
+
+
+    @Override
+    public Vehicle findByNumber(String number) {
+        return vehicleRepository.findByNumber(number);
     }
 
     @Override
@@ -53,6 +64,6 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public boolean isVehicleExists(Vehicle vehicle) {
-        return false;
+        return (findByNumber(vehicle.getNumber())!=null);
     }
 }
