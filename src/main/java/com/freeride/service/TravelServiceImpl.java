@@ -3,10 +3,15 @@ package com.freeride.service;
 import com.freeride.model.Travel;
 import com.freeride.repositories.TravelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by Chamath Abeysinghe on 2/8/2017.
  */
+
+@Service("travelService")
+@Transactional
 public class TravelServiceImpl implements TravelService {
 
     @Autowired

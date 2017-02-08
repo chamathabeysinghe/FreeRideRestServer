@@ -7,8 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * Created by Chamath Abeysinghe on 2/8/2017.
  */
-@Service("joinTravelService")
-@Transactional
+
 public interface JoinTravelService {
     JoinTravel findById(Long id);
 

@@ -1,7 +1,10 @@
 package com.freeride.controller;
 
+import com.freeride.model.Travel;
 import com.freeride.model.User;
 import com.freeride.model.Vehicle;
+import com.freeride.service.JoinTravelService;
+import com.freeride.service.TravelService;
 import com.freeride.service.UserService;
 import com.freeride.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +29,10 @@ public class RestApiController {
     UserService userService;
     @Autowired
     VehicleService vehicleService;
+    @Autowired
+    TravelService travelService;
+    @Autowired
+    JoinTravelService joinTravelService;
 
     /**
      * for testing purposes only
@@ -98,6 +105,23 @@ public class RestApiController {
             return  new ResponseEntity<String>("Success",HttpStatus.OK);
         }
     }
+
+    @RequestMapping(value = "/registerTravel",method = RequestMethod.POST)
+    public ResponseEntity<String> registerTravel(@RequestParam Map<String,String> allRequestParams){
+        Travel travel=new Travel();
+        travel.setEndLocation(allRequestParams.get("endLocation"));
+        travel.setFromLocation(allRequestParams.get("fromLocation"));
+        travel.setRoute(allRequestParams.get("route"));
+        travel.setStartTime(allRequestParams.get("startTime"));
+        travel.setVehicleId(Long.parseLong(allRequestParams.get("vehicleId")));
+        travel.setStatus("New Travel");
+        travelService.saveTravel(travel);
+        return  new ResponseEntity<String>("Success",HttpStatus.OK);
+    }
+
+
+
+
 
 
 
